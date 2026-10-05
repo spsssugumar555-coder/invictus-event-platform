@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { color-scheme: dark; }
+  body {
+    @apply bg-ink text-paper font-sans antialiased;
+    background-image: radial-gradient(rgba(157, 169, 204, 0.09) 1px, transparent 1px);
+    background-size: 22px 22px;
+  }
+  h1, h2, h3 { @apply font-display tracking-tight; }
+  :focus-visible { @apply outline outline-2 outline-offset-2 outline-brass; }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center justify-center gap-2 rounded-lg px-4 py-2.5 text-sm font-semibold transition
+           disabled:cursor-not-allowed disabled:opacity-50;
+  }
+  .btn-primary { @apply btn bg-brass text-ink hover:bg-[#f0bb55]; }
+  .btn-ghost { @apply btn border border-edge text-paper hover:bg-raised; }
+  .btn-danger { @apply btn bg-coral/90 text-ink hover:bg-coral; }
+  .field {
+    @apply w-full rounded-lg border border-edge bg-ink px-3 py-2.5 text-paper placeholder:text-mist/60
+           focus:border-brass focus:outline-none;
+  }
+  .label { @apply mb-1.5 block text-sm font-medium text-mist; }
+  .card { @apply rounded-2xl border border-edge bg-panel p-5 sm:p-6; }
+  .th { @apply px-4 py-3 text-left text-xs font-semibold text-mist whitespace-nowrap; }
+  .td { @apply px-4 py-3 text-sm whitespace-nowrap; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}

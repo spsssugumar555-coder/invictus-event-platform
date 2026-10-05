@@ -1,0 +1,43 @@
+server:
+  port: ${PORT:8080}
+spring:
+  servlet:
+    multipart:
+      max-file-size: 6MB
+      max-request-size: 7MB
+  datasource:
+    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/invictus}
+    username: ${DATABASE_USERNAME:invictus}
+    password: ${DATABASE_PASSWORD:invictus}
+    hikari:
+      maximum-pool-size: 5
+  jpa:
+    hibernate:
+      ddl-auto: validate
+    open-in-view: false
+    properties:
+      hibernate:
+        jdbc:
+          time_zone: UTC
+  flyway:
+    enabled: true
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
+app:
+  round2:
+    max-generations: ${ROUND2_MAX_GENERATIONS:40}
+  jwt:
+    secret: ${JWT_SECRET}
+    expiration-minutes: ${JWT_EXPIRATION_MINUTES:720}
+  frontend-url: ${FRONTEND_URL:http://localhost:5173}
+  public-base-url: ${PUBLIC_BASE_URL:http://localhost:8080}
+  admin:
+    email: ${ADMIN_EMAIL:}
+    password: ${ADMIN_PASSWORD:}
+  gemini:
+    api-key: ${GEMINI_API_KEY:}
+    model: ${GEMINI_MODEL:}
+    max-output-tokens: ${GEMINI_MAX_OUTPUT_TOKENS:0}

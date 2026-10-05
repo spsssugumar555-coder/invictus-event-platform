@@ -1,0 +1,14 @@
+# Local PostgreSQL only. Run the backend and frontend with Maven and npm (see README).
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_DB: invictus
+      POSTGRES_USER: invictus
+      POSTGRES_PASSWORD: invictus
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+volumes:
+  pgdata:
